@@ -18,7 +18,17 @@ processed_data = sorted_data.drop(columns=["Timestamp"])
 X = processed_data.drop(columns=["Label"])
 y = processed_data["Label"]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+'''
+If you want to use the ".head, .tail" here use 1 * 0.8 to a value of 1 * 0.2 = for 80/20 testing with a collection of 1 * float to a value of 1 * float. 
+Could also use flat div but either set the test_size and random state below or use the ".head, .tail" (Its whatever but you can try both).
+Will look like --> 
+train_df = processed_data.head(1 * 0.8)
+test_df = processed_data.tail(1 * 0.2)
+But you will need to define the lenght of data. You can use --> Above the df data above -->
+l_data = len(processed_data.index)
+'''
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42) 
 
 # Instantiate and train the RandomForestClassifier
 clf = RandomForestClassifier(n_estimators=45)
